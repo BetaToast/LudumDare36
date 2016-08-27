@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ArchaicGame.cs" />
+    <Compile Include="Controls\Button.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\GamePadButtonState.cs" />
     <Compile Include="Input\GamepadManager.cs" />

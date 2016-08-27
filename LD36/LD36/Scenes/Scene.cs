@@ -13,6 +13,7 @@ namespace LD36.Scenes
 		public TextureManager Textures => ArchaicGame.Textures;
 		public SoundManager Sounds => ArchaicGame.Sounds;
 		public InputManager Input => ArchaicGame.Input;
+		public SceneManager Scenes => ArchaicGame.Scenes;
 
 		public virtual void Initialize()
 		{
