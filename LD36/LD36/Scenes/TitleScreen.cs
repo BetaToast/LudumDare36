@@ -124,7 +124,7 @@ namespace LD36.Scenes
 
 	    public void Credits()
 	    {
-		    
+		    Scenes.ChangeScene(CreditsScene.Title);
 	    }
 
 	    public void ExitGame()

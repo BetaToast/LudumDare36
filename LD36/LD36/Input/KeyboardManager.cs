@@ -48,6 +48,12 @@ namespace LD36.Input
 			return CurrentState.GetPressedKeys().Count() == 0;
 		}
 
+		public void Reset()
+		{
+			PreviousState = new KeyboardState();
+			CurrentState = Keyboard.GetState();
+		}
+
 		#endregion
 	}
 }

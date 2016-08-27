@@ -65,30 +65,14 @@ namespace LD36.Input
 
 		public bool IsAnyButtonPressed()
 		{
-			var currentState = ButtonState.Pressed;
 			var buttons = Enum.GetValues(typeof(MouseButtons)).Cast<MouseButtons>();
-			foreach (var button in buttons)
-			{
-				switch (button)
-				{
-					case MouseButtons.Left:
-						if (CurrentState.LeftButton == currentState) return true;
-						break;
-					case MouseButtons.Middle:
-						if (CurrentState.MiddleButton == currentState) return true;
-						break;
-					case MouseButtons.Right:
-						if (CurrentState.RightButton == currentState) return true;
-						break;
-					case MouseButtons.XButton1:
-						if (CurrentState.XButton1 == currentState) return true;
-						break;
-					case MouseButtons.XButton2:
-						if (CurrentState.XButton2 == currentState) return true;
-						break;
-				}
-			}
-			return false;
+			return buttons.Select(button => IsButton(button, ButtonState.Pressed, ButtonState.Released)).Any(ret => ret);
+		}
+
+		public void Reset()
+		{
+			PreviousState = CurrentState;
+			CurrentState = Mouse.GetState();
 		}
 	}
 }

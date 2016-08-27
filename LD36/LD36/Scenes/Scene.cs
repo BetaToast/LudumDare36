@@ -8,12 +8,14 @@ namespace LD36.Scenes
 	public class Scene
 	{
 		public bool IsLoaded { get; set; }
+		public bool FirstLoad { get; set; }
 
 		public SpriteBatch SpriteBatch => ArchaicGame.SpriteBatch;
 		public TextureManager Textures => ArchaicGame.Textures;
 		public SoundManager Sounds => ArchaicGame.Sounds;
 		public InputManager Input => ArchaicGame.Input;
 		public SceneManager Scenes => ArchaicGame.Scenes;
+		public FontManager Fonts => ArchaicGame.Fonts;
 
 		public virtual void Initialize()
 		{
@@ -27,7 +29,7 @@ namespace LD36.Scenes
 
 		public virtual void Update(GameTime gameTime)
 		{
-			
+			FirstLoad = false;
 		}
 
 		public virtual void Draw(GameTime gameTime)

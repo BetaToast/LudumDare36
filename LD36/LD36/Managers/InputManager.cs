@@ -29,5 +29,12 @@ namespace LD36.Managers
 			if (GamePad.IsEnabled) GamePad.Update(gameTime);
 			if (Mouse.IsEnabled) Mouse.Update(gameTime);
 		}
+
+		public void Reset()
+		{
+			Keyboard.Reset();
+			GamePad.Reset();
+			Mouse.Reset();
+		}
 	}
 }

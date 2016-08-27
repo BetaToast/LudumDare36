@@ -80,6 +80,14 @@ namespace LD36.Input
 			return GetCurrentButtonState(playerIndex).IsAnyButtonPressed();
 		}
 
+		public void Reset()
+		{
+			CurrentState = new GamePadState[4];
+			PreviousState = new GamePadState[4];
+			CurrentButtonState = new GamePadButtonState[4];
+			PreviousButtonState = new GamePadButtonState[4];
+		}
+
 		#endregion
 	}
 }

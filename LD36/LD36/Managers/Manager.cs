@@ -11,16 +11,21 @@ namespace LD36.Managers
 
 		public virtual T Load(string itemName)
 		{
-			var ret = ArchaicGame.ContentManager.Load<T>(itemName);
+			var item = ArchaicGame.ContentManager.Load<T>(itemName);
+			return Load(itemName, item);
+		}
+
+		public virtual T Load(string itemName, T item)
+		{
 			if (Items.ContainsKey(itemName))
 			{
-				Items[itemName] = ret;
+				Items[itemName] = item;
 			}
 			else
 			{
-				Items.Add(itemName, ret);
+				Items.Add(itemName, item);
 			}
-			return ret;
+			return item;
 		}
 
 		public virtual T Get(string itemName)

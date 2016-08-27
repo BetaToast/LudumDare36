@@ -40,10 +40,15 @@
   <ItemGroup>
     <Compile Include="ArchaicGame.cs" />
     <Compile Include="Controls\Button.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\RandomExtensions.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="FontNames.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\GamePadButtonState.cs" />
     <Compile Include="Input\GamepadManager.cs" />
     <Compile Include="Input\MouseButtons.cs" />
+    <Compile Include="Managers\FontManager.cs" />
     <Compile Include="Managers\InputManager.cs" />
     <Compile Include="Input\KeyboardManager.cs" />
     <Compile Include="Managers\Manager.cs" />
@@ -52,11 +57,13 @@
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\CreditsScene.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Scenes\Maze1Scene.cs" />
     <Compile Include="Scenes\CampScene.cs" />
     <Compile Include="Scenes\TitleScreen.cs" />
+    <Compile Include="Scenes\_TemplateScene.cs" />
     <Compile Include="SoundNames.cs" />
     <Compile Include="TextureNames.cs" />
   </ItemGroup>

@@ -28,6 +28,8 @@ namespace LD36.Scenes
 		{
 			var scene = _scenes[name];
 			CurrentScene = scene;
+			CurrentScene.FirstLoad = true;
+			ArchaicGame.Input.Reset();
 			if(!CurrentScene.IsLoaded) CurrentScene.LoadContent(ArchaicGame.ContentManager);
 		}
 	}
