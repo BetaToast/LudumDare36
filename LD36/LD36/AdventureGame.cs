@@ -3,43 +3,49 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
+
+using System.Collections.Generic;
 
 namespace LD36
 {
-    public class AdventureGame 
-		: Game
+    public class AdventureGame
+        : Game
     {
-		public static SceneManager Scenes  { get; set; }	
-		public static GraphicsDeviceManager Graphics { get; set; }
-        public static SpriteBatch SpriteBatch  { get; set; }
-		public static ContentManager ContentManager { get; set; }
+        public static SceneManager Scenes { get; set; }
+        public static GraphicsDeviceManager Graphics { get; set; }
+        public static SpriteBatch SpriteBatch { get; set; }
+        public static ContentManager ContentManager { get; set; }
+        public static Dictionary<string, Song> sounds = new Dictionary<string, Song>();
 
         public AdventureGame()
         {
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-	        ContentManager = Content;
+            ContentManager = Content;
         }
 
         protected override void Initialize()
         {
-			Scenes = new SceneManager();
+            Scenes = new SceneManager();
             Scenes.AddScene(TitleScreen.Title, new TitleScreen());
             Scenes.AddScene(CampScene.Title, new CampScene());
             Scenes.AddScene(Maze1Scene.Title, new Maze1Scene());
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-	        Scenes.ChangeScene(TitleScreen.Title);
+            sounds.Add("CowMoo1", Content.Load<Song>("CowMoo1"));
+
+            Scenes.ChangeScene(TitleScreen.Title);
         }
 
         protected override void UnloadContent()
         {
-            
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -47,7 +53,7 @@ namespace LD36
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-	        Scenes.Update(gameTime);
+            Scenes.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -56,7 +62,7 @@ namespace LD36
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-	        Scenes.Draw(gameTime);
+            Scenes.Draw(gameTime);
 
             base.Draw(gameTime);
         }

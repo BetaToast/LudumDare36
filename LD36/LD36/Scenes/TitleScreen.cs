@@ -2,11 +2,11 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace LD36.Scenes
 {
-    public class TitleScreen
-        : Scene
+    public class TitleScreen : Scene
     {
 		private SpriteBatch _spriteBatch;
 		private Texture2D _background;
@@ -16,7 +16,7 @@ namespace LD36.Scenes
 		public override void LoadContent(ContentManager content)
 		{
 			_spriteBatch = new SpriteBatch(AdventureGame.Graphics.GraphicsDevice);
-			_background = content.Load<Texture2D>("PiriReis"); // change these names to the names of your images
+			_background = content.Load<Texture2D>("Archaic"); // change these names to the names of your images
 
 		}
 
@@ -34,8 +34,8 @@ namespace LD36.Scenes
         {
             if (Keyboard.GetState().IsKeyDown(Keys.M))
             {
-			
-			}
+                MediaPlayer.Play(AdventureGame.sounds["CowMoo1"]);
+            }
             base.Update(gameTime);
         }
 
