@@ -44,6 +44,8 @@
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Scenes\SceneNames.cs" />
+    <Compile Include="Scenes\Maze1Scene.cs" />
+    <Compile Include="Scenes\CampScene.cs" />
     <Compile Include="Scenes\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>

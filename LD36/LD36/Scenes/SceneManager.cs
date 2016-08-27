@@ -5,7 +5,7 @@ namespace LD36.Scenes
 {
 	public class SceneManager
 	{
-		private Dictionary<SceneNames, Scene> _scenes = new Dictionary<SceneNames, Scene>();
+		private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
 
 		public Scene CurrentScene { get; set; }
 
@@ -24,12 +24,12 @@ namespace LD36.Scenes
 			CurrentScene?.Draw(gameTime);
 		}
 
-		public void AddScene(SceneNames name, Scene scene)
+		public void AddScene(string name, Scene scene)
 		{
 			_scenes.Add(name, scene);
 		}
 
-		public void ChangeScene(SceneNames name)
+		public void ChangeScene(string name)
 		{
 			var scene = _scenes[name];
 			CurrentScene = scene;

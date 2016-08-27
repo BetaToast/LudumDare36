@@ -24,14 +24,17 @@ namespace LD36
         protected override void Initialize()
         {
 			Scenes = new SceneManager();
-			Scenes.AddScene(SceneNames.Title, new TitleScreen());
+            Scenes.AddScene(TitleScreen.Title, new TitleScreen());
+            Scenes.AddScene(CampScene.Title, new CampScene());
+            Scenes.AddScene(Maze1Scene.Title, new Maze1Scene());
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-	        Scenes.ChangeScene(SceneNames.Title);
+	        Scenes.ChangeScene(TitleScreen.Title);
         }
 
         protected override void UnloadContent()
