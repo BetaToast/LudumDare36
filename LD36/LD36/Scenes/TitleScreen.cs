@@ -16,7 +16,7 @@ namespace LD36.Scenes
 		public override void LoadContent(ContentManager content)
 		{
 			_spriteBatch = new SpriteBatch(AdventureGame.Graphics.GraphicsDevice);
-			_background = content.Load<Texture2D>("Archaic"); // change these names to the names of your images
+			_background = content.Load<Texture2D>("TitleWithBackground"); // change these names to the names of your images
 
 		}
 
