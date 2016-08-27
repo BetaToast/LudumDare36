@@ -9,7 +9,7 @@ namespace LD36.Scenes
 
         public override void Draw(GameTime gameTime)
 		{
-			AdventureGame.Graphics.GraphicsDevice.Clear(Color.Black);
+			ArchaicGame.Graphics.GraphicsDevice.Clear(Color.Black);
 		}
         public override void Update(GameTime gameTime)
         {

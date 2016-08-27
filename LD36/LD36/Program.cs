@@ -14,7 +14,7 @@ namespace LD36
         [STAThread]
         static void Main()
         {
-            using (var game = new AdventureGame())
+            using (var game = new ArchaicGame())
                 game.Run();
         }
     }

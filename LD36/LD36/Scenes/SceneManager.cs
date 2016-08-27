@@ -5,15 +5,10 @@ namespace LD36.Scenes
 {
 	public class SceneManager
 	{
-		private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
+		private readonly Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
 
 		public Scene CurrentScene { get; set; }
-
-		public SceneManager()
-		{
-			
-		}
-
+		
 		public void Update(GameTime gameTime)
 		{
 			CurrentScene?.Update(gameTime);
@@ -33,7 +28,7 @@ namespace LD36.Scenes
 		{
 			var scene = _scenes[name];
 			CurrentScene = scene;
-			if(!CurrentScene.IsLoaded) CurrentScene.LoadContent(AdventureGame.ContentManager);
+			if(!CurrentScene.IsLoaded) CurrentScene.LoadContent(ArchaicGame.ContentManager);
 		}
 	}
 }
