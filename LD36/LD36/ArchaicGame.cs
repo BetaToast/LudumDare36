@@ -1,9 +1,9 @@
 ﻿using System;
+using LD36.Characters;
 using LD36.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using LD36.Managers;
 
 namespace LD36
@@ -20,6 +20,7 @@ namespace LD36
         public static ContentManager ContentManager { get; set; }
 		public static Vector2 Resolution { get; set; }
 		public static Random Random { get; private set; }
+		public static Player Player { get; set; }
 
 	    public static int ScreenWidth => (int)Resolution.X;
 		public static int ScreenHeight => (int)Resolution.Y;
@@ -76,6 +77,8 @@ namespace LD36
 
 	        var whitePixel = Textures.Load(TextureNames.WhitePixel, new Texture2D(GraphicsDevice, 1, 1));
 	        whitePixel.SetData(new[] {Color.White});
+
+			Player = new Player(whitePixel);
 	        
             Scenes.ChangeScene(TitleScreen.Title);
         }

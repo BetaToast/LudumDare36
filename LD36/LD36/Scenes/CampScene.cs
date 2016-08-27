@@ -1,4 +1,6 @@
-﻿using LD36.Controls;
+﻿using LD36.Characters;
+using LD36.Controls;
+using LD36.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,11 +14,13 @@ namespace LD36.Scenes
         public const string Title = "Camp";
 		
 		private Texture2D _background;
+		private Player _player => ArchaicGame.Player;
 		
 		#region Initialize
 
 		public override void LoadContent(ContentManager content)
 		{
+			_player.Position = new Vector2(624, 344);
 			LoadTextures();
 			LoadSounds();
 			LoadControls();
@@ -49,6 +53,7 @@ namespace LD36.Scenes
 		{
 			UpdateInput();
 			UpdateControls(gameTime);
+			UpdatePlayer(gameTime);
 			base.Update(gameTime);
 		}
 
@@ -64,11 +69,21 @@ namespace LD36.Scenes
 			{
 				ExitGame();
 			}
+
+			if (Input.Mouse.IsButtonPressed(MouseButtons.Left))
+			{
+				_player.Destination = new Vector2(Input.Mouse.CurrentPosition.X, Input.Mouse.CurrentPosition.Y);
+			}
 		}
 
 		private void UpdateControls(GameTime gameTime)
 		{
 			
+		}
+
+		private void UpdatePlayer(GameTime gameTime)
+		{
+			_player.Update(gameTime);
 		}
 
 		#endregion
@@ -82,7 +97,9 @@ namespace LD36.Scenes
 			// Need NonPremultiplied for transparencies to work
 			SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
 
-			SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
+				SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
+
+				_player.Draw(gameTime);
 			
 			SpriteBatch.End();
 		}
