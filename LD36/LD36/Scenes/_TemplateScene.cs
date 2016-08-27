@@ -8,17 +8,23 @@ namespace LD36.Scenes
 		: Scene
 	{
 		public const string Title = "Template";
+	    private bool ContentLoaded;
 
 		#region Initialize
 
-		public override void LoadContent(ContentManager content)
+		public override void Load(ContentManager content)
 		{
-			LoadTextures();
-			LoadSounds();
-			LoadControls();
+		    if (!ContentLoaded)
+		    {
+		        LoadTextures();
+		        LoadSounds();
+		        LoadControls();
+		    }
 		}
 
-		private void LoadTextures()
+	    public override void UnLoad(){}
+
+	    private void LoadTextures()
 		{
 
 		}

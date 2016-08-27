@@ -55,6 +55,7 @@
     <Compile Include="Input\KeyboardManager.cs" />
     <Compile Include="Managers\Manager.cs" />
     <Compile Include="Input\MouseManager.cs" />
+    <Compile Include="Managers\SongManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Program.cs" />
@@ -62,7 +63,6 @@
     <Compile Include="Scenes\CreditsScene.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Scenes\Maze1Scene.cs" />
     <Compile Include="Scenes\CampScene.cs" />
     <Compile Include="Scenes\TitleScreen.cs" />
     <Compile Include="Scenes\_TemplateScene.cs" />

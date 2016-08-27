@@ -8,111 +8,115 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LD36.Scenes
 {
-	public  class CampScene
-		:  Scene
-	{
+    public class CampScene
+        : Scene
+    {
         public const string Title = "Camp";
-		
-		private Texture2D _background;
-		private Player _player => ArchaicGame.Player;
-		
-		#region Initialize
 
-		public override void LoadContent(ContentManager content)
-		{
-			_player.Position = new Vector2(624, 344);
-			LoadTextures();
-			LoadSounds();
-			LoadControls();
-		}
+        private Texture2D _background;
+        private Player _player => ArchaicGame.Player;
+        private bool ContentLoaded;
+        #region Initialize
 
-		private void LoadTextures()
-		{
-			_background = Textures.Load(TextureNames.CampBackground);
+        public override void Load(ContentManager content)
+        {
+            if (!ContentLoaded)
+            {
+                _player.Position = new Vector2(624, 344);
+                LoadTextures();
+                LoadSounds();
+                LoadControls();
+            }
+        }
+        public override void UnLoad() { }
 
-			Textures.Load(TextureNames.StartAdventureButton);
-			Textures.Load(TextureNames.ExitGameButton);
-			Textures.Load(TextureNames.CreditsButton);
-		}
+        private void LoadTextures()
+        {
+            _background = Textures.Load(TextureNames.CampBackground);
 
-		private void LoadSounds()
-		{
-			Sounds.Load(SoundNames.CowMoo);
-		}
+            Textures.Load(TextureNames.StartAdventureButton);
+            Textures.Load(TextureNames.ExitGameButton);
+            Textures.Load(TextureNames.CreditsButton);
+        }
 
-		private void LoadControls()
-		{
-			
-		}
+        private void LoadSounds()
+        {
+            Sounds.Load(SoundNames.CowMoo1);
+        }
 
-		#endregion
+        private void LoadControls()
+        {
 
-		#region Update
+        }
 
-		public override void Update(GameTime gameTime)
-		{
-			UpdateInput();
-			UpdateControls(gameTime);
-			UpdatePlayer(gameTime);
-			base.Update(gameTime);
-		}
+        #endregion
 
-		private void UpdateInput()
-		{
-			if (Input.Keyboard.IsKeyPressed(Keys.M))
-			{
-				Sounds.Play(SoundNames.CowMoo);
-			}
-			
-			if (Input.Keyboard.IsKeyPressed(Keys.Escape)
-				|| Input.GamePad.IsButtonPressed(PlayerIndex.One, LD36.Input.Buttons.Back))
-			{
-				ExitGame();
-			}
+        #region Update
 
-			if (Input.Mouse.IsButtonPressed(MouseButtons.Left))
-			{
-				_player.Destination = new Vector2(Input.Mouse.CurrentPosition.X, Input.Mouse.CurrentPosition.Y);
-			}
-		}
+        public override void Update(GameTime gameTime)
+        {
+            UpdateInput();
+            UpdateControls(gameTime);
+            UpdatePlayer(gameTime);
+            base.Update(gameTime);
+        }
 
-		private void UpdateControls(GameTime gameTime)
-		{
-			
-		}
+        private void UpdateInput()
+        {
+            if (Input.Keyboard.IsKeyPressed(Keys.M))
+            {
+                Sounds.Play(SoundNames.CowMoo1);
+            }
 
-		private void UpdatePlayer(GameTime gameTime)
-		{
-			_player.Update(gameTime);
-		}
+            if (Input.Keyboard.IsKeyPressed(Keys.Escape)
+                || Input.GamePad.IsButtonPressed(PlayerIndex.One, LD36.Input.Buttons.Back))
+            {
+                ExitGame();
+            }
 
-		#endregion
+            if (Input.Mouse.IsButtonPressed(MouseButtons.Left))
+            {
+                _player.Destination = new Vector2(Input.Mouse.CurrentPosition.X, Input.Mouse.CurrentPosition.Y);
+            }
+        }
 
-		#region Draw
+        private void UpdateControls(GameTime gameTime)
+        {
 
-		public override void Draw(GameTime gameTime)
-		{
-			ArchaicGame.Graphics.GraphicsDevice.Clear(Color.Black);
+        }
 
-			// Need NonPremultiplied for transparencies to work
-			SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
+        private void UpdatePlayer(GameTime gameTime)
+        {
+            _player.Update(gameTime);
+        }
 
-				SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
+        #endregion
 
-				_player.Draw(gameTime);
-			
-			SpriteBatch.End();
-		}
+        #region Draw
 
-		#endregion
+        public override void Draw(GameTime gameTime)
+        {
+            ArchaicGame.Graphics.GraphicsDevice.Clear(Color.Black);
 
-		#region Actions
-		
-		public void ExitGame()
-		{
-			Scenes.ChangeScene(TitleScreen.Title);
-		}
+            // Need NonPremultiplied for transparencies to work
+            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
 
-		#endregion
-	}
+            SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
+
+            _player.Draw(gameTime);
+
+            SpriteBatch.End();
+        }
+
+        #endregion
+
+        #region Actions
+
+        public void ExitGame()
+        {
+            Scenes.ChangeScene(TitleScreen.Title);
+        }
+
+        #endregion
+    }
 }

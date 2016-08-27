@@ -26,11 +26,16 @@ namespace LD36.Scenes
 
 		public void ChangeScene(string name)
 		{
-			var scene = _scenes[name];
-			CurrentScene = scene;
-			CurrentScene.FirstLoad = true;
-			ArchaicGame.Input.Reset();
-			if(!CurrentScene.IsLoaded) CurrentScene.LoadContent(ArchaicGame.ContentManager);
-		}
-	}
+            ArchaicGame.Input.Reset();
+            CurrentScene?.UnLoad();
+
+            var scene = _scenes[name];
+            scene.Load(ArchaicGame.ContentManager);
+
+            //if (!CurrentScene.IsLoaded)
+            //    CurrentScene.LoadContent(ArchaicGame.ContentManager);
+
+            CurrentScene = scene;
+        }
+    }
 }

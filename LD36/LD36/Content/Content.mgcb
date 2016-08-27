@@ -51,7 +51,7 @@
 
 #begin sfx/CowMoo1.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sfx/CowMoo1.mp3
 
@@ -120,4 +120,22 @@
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
 /build:DefaultFont.spritefont
+
+#begin sfx\VintageButton1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sfx\VintageButton1.wav
+
+#begin musx\CrystalHunterPreview.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:musx\CrystalHunterPreview.mp3
+
+#begin musx/Morning.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:musx/Morning.mp3
 

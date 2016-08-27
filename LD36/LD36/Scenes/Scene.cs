@@ -5,36 +5,31 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LD36.Scenes
 {
-	public class Scene
-	{
-		public bool IsLoaded { get; set; }
-		public bool FirstLoad { get; set; }
+    public abstract class Scene
+    {
+        protected SpriteBatch SpriteBatch => ArchaicGame.SpriteBatch;
+        protected TextureManager Textures => ArchaicGame.Textures;
+        protected SoundManager Sounds => ArchaicGame.Sounds;
+        protected SongManager Songs => ArchaicGame.Songs;
+        protected InputManager Input => ArchaicGame.Input;
+        protected SceneManager Scenes => ArchaicGame.Scenes;
+        protected FontManager Fonts => ArchaicGame.Fonts;
 
-		public SpriteBatch SpriteBatch => ArchaicGame.SpriteBatch;
-		public TextureManager Textures => ArchaicGame.Textures;
-		public SoundManager Sounds => ArchaicGame.Sounds;
-		public InputManager Input => ArchaicGame.Input;
-		public SceneManager Scenes => ArchaicGame.Scenes;
-		public FontManager Fonts => ArchaicGame.Fonts;
+        public virtual void Initialize()
+        {
 
-		public virtual void Initialize()
-		{
-			
-		}
+        }
 
-		public virtual void LoadContent(ContentManager content)
-		{
-			IsLoaded = true;
-		}
+        public virtual void Update(GameTime gameTime)
+        {
+        }
 
-		public virtual void Update(GameTime gameTime)
-		{
-			FirstLoad = false;
-		}
+        public virtual void Draw(GameTime gameTime)
+        {
 
-		public virtual void Draw(GameTime gameTime)
-		{
-			
-		}
-	}
+        }
+
+        public abstract void Load(ContentManager content);
+        public abstract void UnLoad();
+    }
 }

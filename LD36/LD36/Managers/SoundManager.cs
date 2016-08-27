@@ -1,15 +1,12 @@
-﻿using Microsoft.Xna.Framework.Media;
+﻿using Microsoft.Xna.Framework.Audio;
 
 namespace LD36.Managers
 {
-	public class SoundManager
-		: Manager<Song>
-	{
-		public Song Play(string soundName)
-		{
-			var song = Get(soundName);
-			MediaPlayer.Play(song);
-			return song;
-		}
-	}
+    public class SoundManager : Manager<SoundEffect>
+    {
+        public void Play(string soundName)
+        {
+            Get(soundName)?.Play();
+        }
+    }
 }
