@@ -12,15 +12,22 @@ namespace LD36
     {
 		#region Globals
 
+		public static ArchaicGame Instance { get; private set; }
 		public static SceneManager Scenes { get; set; }
         public static GraphicsDeviceManager Graphics { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
         public static ContentManager ContentManager { get; set; }
+		public static Vector2 Resolution { get; set; }
+
+	    public static int ScreenWidth => (int)Resolution.X;
+		public static int ScreenHeight => (int)Resolution.Y;
+		public static Rectangle ScreenBounds => new Rectangle(0, 0, ScreenWidth, ScreenHeight);
 
 		#region Managers
 
 		public static SoundManager Sounds { get; set; }
 		public static TextureManager Textures { get; set; }
+		public static InputManager Input { get; set; }
 
 		#endregion
 
@@ -33,12 +40,19 @@ namespace LD36
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             ContentManager = Content;
+
+			IsMouseVisible = true;
+			ChangeResolution(1280, 720);
+			Window.Title = "Archaic";
+
+			Instance = this;
         }
 
         protected override void Initialize()
         {
 	        Sounds = new SoundManager();
 			Textures = new TextureManager();
+			Input = new InputManager();
 
             Scenes = new SceneManager();
             Scenes.AddScene(TitleScreen.Title, new TitleScreen());
@@ -60,9 +74,7 @@ namespace LD36
 
 		protected override void Update(GameTime gameTime)
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-				Exit();
-
+			Input.Update(gameTime);
 			Scenes.Update(gameTime);
 
 			base.Update(gameTime);
@@ -81,6 +93,18 @@ namespace LD36
             base.Draw(gameTime);
         }
 
+		#endregion
+
+		#region Global Methods / Functions
+
+	    public static void ChangeResolution(int width, int height)
+	    {
+		    Resolution = new Vector2(width, height);
+		    Graphics.PreferredBackBufferWidth = width;
+		    Graphics.PreferredBackBufferHeight = height;
+			Graphics.ApplyChanges();
+	    }
+		
 		#endregion
 	}
 }

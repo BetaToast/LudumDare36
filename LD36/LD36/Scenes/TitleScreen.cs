@@ -8,37 +8,57 @@ namespace LD36.Scenes
     public class TitleScreen 
 		: Scene
     {
-		private SpriteBatch _spriteBatch;
 		private Texture2D _background;
 	    
 		public const string Title = "Title";
 
+		#region Initialize
+
 		public override void LoadContent(ContentManager content)
 		{
-			_spriteBatch = ArchaicGame.SpriteBatch;										// Single SpriteBatch on main game instance
-			_background = ArchaicGame.Textures.Load(TextureNames.TitleWithBackground);
-			ArchaicGame.Sounds.Load(SoundNames.CowMoo);
+			_background = Textures.Load(TextureNames.TitleWithBackground);
+			Sounds.Load(SoundNames.CowMoo);
 		}
+
+		#endregion
+
+		#region Update
+
+		public override void Update(GameTime gameTime)
+		{
+			UpdateInput();
+			base.Update(gameTime);
+		}
+
+	    private void UpdateInput()
+	    {
+			if (Input.Keyboard.IsKeyPressed(Keys.M))
+			{
+				Sounds.Play(SoundNames.CowMoo);
+			}
+
+		    if (Input.Keyboard.IsKeyPressed(Keys.Escape)
+		        || Input.GamePad.IsButtonPressed(PlayerIndex.One, LD36.Input.Buttons.Back))
+		    {
+			    ArchaicGame.Instance.Exit();
+		    }
+		}
+
+		#endregion
+
+		#region Draw
 
 		public override void Draw(GameTime gameTime)
         {
             ArchaicGame.Graphics.GraphicsDevice.Clear(Color.Black);
 
-			_spriteBatch.Begin();
+			SpriteBatch.Begin();
 
-			_spriteBatch.Draw(_background, new Rectangle(0, 0, 800, 480), Color.White);
+			SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
 
-			_spriteBatch.End();
+			SpriteBatch.End();
 		}
-        public override void Update(GameTime gameTime)
-        {
-            if (Keyboard.GetState().IsKeyDown(Keys.M))
-            {
-	            ArchaicGame.Sounds.Play(SoundNames.CowMoo);
 
-            }
-            base.Update(gameTime);
-        }
-
+		#endregion
     }
 }

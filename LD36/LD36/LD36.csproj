@@ -39,7 +39,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ArchaicGame.cs" />
+    <Compile Include="Input\Buttons.cs" />
+    <Compile Include="Input\GamePadButtonState.cs" />
+    <Compile Include="Input\GamepadManager.cs" />
+    <Compile Include="Input\MouseButtons.cs" />
+    <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Input\KeyboardManager.cs" />
     <Compile Include="Managers\Manager.cs" />
+    <Compile Include="Input\MouseManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Program.cs" />
