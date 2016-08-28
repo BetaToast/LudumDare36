@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using LD36.Game_Entities.Scenes;
 using Microsoft.Xna.Framework;
 
-namespace LD36.Game_Entities.Scenes
+namespace LD36.Managers
 {
 	public class SceneManager
 	{
@@ -31,10 +32,7 @@ namespace LD36.Game_Entities.Scenes
 
             var scene = _scenes[name];
             scene.Load(ArchaicGame.ContentManager);
-
-            //if (!CurrentScene.IsLoaded)
-            //    CurrentScene.LoadContent(ArchaicGame.ContentManager);
-
+			
             CurrentScene = scene;
         }
     }

@@ -15,6 +15,18 @@ namespace LD36.Extensions
             return ret;
         }
 
+	    public static Vector2 SetX(this Vector2 input, float x)
+	    {
+		    var ret = new Vector2(x, input.Y);
+		    return ret;
+	    }
+
+	    public static Vector2 SetY(this Vector2 input, float y)
+	    {
+		    var ret = new Vector2(input.X, y);
+		    return ret;
+	    }
+
         public static Point ToPoint(this Vector2 input) => new Point((int)input.X, (int)input.Y);
     }
 }

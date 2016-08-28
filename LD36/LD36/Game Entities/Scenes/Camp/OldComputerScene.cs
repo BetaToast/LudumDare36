@@ -2,28 +2,28 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LD36.Game_Entities.Scenes
+namespace LD36.Game_Entities.Scenes.Camp
 {
-	public class _TemplateScene
+	public class OldComputerScene
 		: Scene
 	{
 		public const string Title = "Template";
-	    
+
 		#region Initialize
 
 		public override void Load(ContentManager content)
 		{
-		    if (!ContentLoaded)
-		    {
-		        LoadTextures();
-		        LoadSounds();
-		        LoadControls();
-		    }
+			if (!ContentLoaded)
+			{
+				LoadTextures();
+				LoadSounds();
+				LoadControls();
+			}
 		}
 
-	    public override void UnLoad() { }
+		public override void UnLoad() { }
 
-	    private void LoadTextures()
+		private void LoadTextures()
 		{
 
 		}

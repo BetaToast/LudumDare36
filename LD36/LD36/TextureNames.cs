@@ -13,6 +13,7 @@
 		public static string CreditsButton = @"gfx/CreditsButton";
 		public static string CampBackground = @"gfx/CampBackground";
 	    public static string blockGreen_puzzle = @"gfx/blockGreen_puzzle";
+		public static string PlayerAnimation = @"gfx/Player";
 
 	}
 }

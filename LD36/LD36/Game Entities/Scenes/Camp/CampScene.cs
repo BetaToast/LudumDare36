@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace LD36.Game_Entities.Scenes
+namespace LD36.Game_Entities.Scenes.Camp
 {
     public class CampScene
         : Scene
@@ -15,8 +15,8 @@ namespace LD36.Game_Entities.Scenes
 
         private Texture2D _background;
         private Player _player => ArchaicGame.Player;
-        private bool ContentLoaded;
         private BaseGameEntity _oldComputer;
+
         #region Initialize
 
         public override void Load(ContentManager content)
@@ -27,6 +27,7 @@ namespace LD36.Game_Entities.Scenes
                 LoadTextures();
                 LoadSounds();
                 LoadControls();
+	            ContentLoaded = true;
             }
         }
         public override void UnLoad() { }
@@ -85,7 +86,12 @@ namespace LD36.Game_Entities.Scenes
 
             if (Input.Mouse.IsButtonHeld(MouseButtons.Left))
             {
-                _player.Destination = new Vector2(Input.Mouse.CurrentPosition.X, Input.Mouse.CurrentPosition.Y);
+	            var mx = Input.Mouse.CurrentPosition.X;
+	            var my = Input.Mouse.CurrentPosition.Y;
+	            if (mx > 0 && my > 0)
+	            {
+		            _player.Destination = new Vector2(mx, my);
+	            }
             }
         }
 
@@ -126,7 +132,7 @@ namespace LD36.Game_Entities.Scenes
         {
             Scenes.ChangeScene(TitleScreen.Title);
         }
-
+		
         #endregion
     }
 }

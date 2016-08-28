@@ -15,21 +15,13 @@ namespace LD36.Game_Entities.Scenes
         protected SceneManager Scenes => ArchaicGame.Scenes;
         protected FontManager Fonts => ArchaicGame.Fonts;
 
-        public virtual void Initialize()
-        {
-
-        }
-
-        public virtual void Update(GameTime gameTime)
-        {
-        }
-
-        public virtual void Draw(GameTime gameTime)
-        {
-
-        }
-
+		public bool ContentLoaded { get; protected set; }
+		
         public abstract void Load(ContentManager content);
         public abstract void UnLoad();
-    }
+
+		public virtual void Initialize() { }
+		public virtual void Update(GameTime gameTime) { }
+		public virtual void Draw(GameTime gameTime) { }
+	}
 }

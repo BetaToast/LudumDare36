@@ -1,6 +1,7 @@
 ﻿using System;
 using LD36.Characters;
 using LD36.Game_Entities.Scenes;
+using LD36.Game_Entities.Scenes.Camp;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -69,10 +70,11 @@ namespace LD36
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
+	        var playerAnimation = Textures.Load(TextureNames.PlayerAnimation);
             var whitePixel = Textures.Load(TextureNames.WhitePixel, new Texture2D(GraphicsDevice, 1, 1));
             whitePixel.SetData(new[] { Color.White });
 
-            Player = new Player(whitePixel);
+            Player = new Player();
 
             Scenes.ChangeScene(TitleScreen.Title);
         }

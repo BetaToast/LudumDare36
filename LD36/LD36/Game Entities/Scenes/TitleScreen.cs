@@ -1,4 +1,5 @@
 ﻿using LD36.Game_Entities.Controls;
+using LD36.Game_Entities.Scenes.Camp;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
