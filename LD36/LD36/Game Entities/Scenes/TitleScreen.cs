@@ -120,9 +120,9 @@ namespace LD36.Game_Entities.Scenes
 
             SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
 
-            _startButton.Draw();
-            _creditsButton.Draw();
-            _exitButton.Draw();
+            _startButton.Draw(gameTime);
+            _creditsButton.Draw(gameTime);
+            _exitButton.Draw(gameTime);
 
             SpriteBatch.End();
         }

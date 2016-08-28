@@ -6,6 +6,7 @@
 
         public static string CowMoo1 = $@"sfx/{nameof(CowMoo1)}";
         public static string VintageButton1 = $@"sfx/{nameof(VintageButton1)}";
+        public static string ConfirmBeepy02 = $@"sfx/{nameof(ConfirmBeepy02)}";
     }
 
     public static class SongNames

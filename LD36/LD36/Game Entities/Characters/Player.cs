@@ -36,10 +36,5 @@ namespace LD36.Characters
                 }
             }
         }
-
-        public void Draw(GameTime gameTime)
-        {
-            ArchaicGame.SpriteBatch.Draw(Texture, Bounds, Tint);
-        }
     }
 }

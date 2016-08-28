@@ -47,6 +47,7 @@
     <Compile Include="Extensions\RectangleExtensions.cs" />
     <Compile Include="Extensions\VectorExtensions.cs" />
     <Compile Include="FontNames.cs" />
+    <Compile Include="Game Entities\Objects\MagicSquare.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\GamePadButtonState.cs" />
     <Compile Include="Input\GamepadManager.cs" />

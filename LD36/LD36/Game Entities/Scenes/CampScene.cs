@@ -1,4 +1,5 @@
 ﻿using LD36.Characters;
+using LD36.Game_Entities.Objects;
 using LD36.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -15,7 +16,7 @@ namespace LD36.Game_Entities.Scenes
         private Texture2D _background;
         private Player _player => ArchaicGame.Player;
         private bool ContentLoaded;
-
+        private BaseGameEntity _oldComputer;
         #region Initialize
 
         public override void Load(ContentManager content)
@@ -46,7 +47,7 @@ namespace LD36.Game_Entities.Scenes
 
         private void LoadControls()
         {
-
+            _oldComputer = new MagicSquare(new Vector2(200, 275), () => { });
         }
 
         #endregion
@@ -65,7 +66,7 @@ namespace LD36.Game_Entities.Scenes
 
         private void CreateItem(GameTime gameTime)
         {
-            
+
 
         }
 
@@ -90,7 +91,7 @@ namespace LD36.Game_Entities.Scenes
 
         private void UpdateControls(GameTime gameTime)
         {
-
+            _oldComputer.Update(gameTime);
         }
 
         private void UpdatePlayer(GameTime gameTime)
@@ -112,6 +113,7 @@ namespace LD36.Game_Entities.Scenes
             SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
 
             _player.Draw(gameTime);
+            _oldComputer.Draw(gameTime);
 
             SpriteBatch.End();
         }

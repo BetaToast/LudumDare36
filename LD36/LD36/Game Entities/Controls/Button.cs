@@ -41,10 +41,5 @@ namespace LD36.Game_Entities.Controls
                 OnClick?.Invoke();
             }
         }
-
-        public void Draw()
-        {
-            ArchaicGame.SpriteBatch.Draw(Texture, Bounds, Tint);
-        }
     }
 }

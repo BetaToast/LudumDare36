@@ -15,5 +15,10 @@ namespace LD36.Game_Entities
         {
             Bounds = new Rectangle(Position.ToPoint(), Size.ToPoint());
         }
+        public void Draw(GameTime gameTime)
+        {
+            ArchaicGame.SpriteBatch.Draw(Texture, Bounds, Tint);
+        }
+
     }
 }
