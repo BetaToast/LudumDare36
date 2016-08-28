@@ -1,4 +1,7 @@
 ﻿using LD36.Characters;
+using LD36.Extensions;
+using LD36.Game_Entities.Objects;
+using LD36.Game_Entities.Scenes.Camp;
 using LD36.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -25,6 +28,7 @@ namespace LD36.Game_Entities.Scenes.Entrance
 				LoadTextures();
 				LoadSounds();
 				LoadControls();
+				LoadEntities();
 			}
 		}
 
@@ -44,6 +48,14 @@ namespace LD36.Game_Entities.Scenes.Entrance
 		private void LoadControls()
 		{
 
+		}
+
+		private void LoadEntities()
+		{
+			Entities.Clear();
+			var campTransition = new SceneTransition(new Vector2(0, 243), new Vector2(64, 477), CampScene.Title);
+			campTransition.OnTransition = GoToCampScene;
+			Entities.Add(campTransition);
 		}
 
 		#endregion
@@ -123,6 +135,11 @@ namespace LD36.Game_Entities.Scenes.Entrance
 		public void ExitGame()
 		{
 			Scenes.ChangeScene(TitleScreen.Title);
+		}
+
+		public void GoToCampScene()
+		{
+			_player.Position = _player.Position.SetX(ArchaicGame.ScreenWidth - _player.Size.X - 65);
 		}
 
 		#endregion

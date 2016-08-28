@@ -156,7 +156,7 @@ namespace LD36.Game_Entities.Scenes.Camp
 
 	    public void GoToEntranceScene()
 	    {
-		    _player.Position = _player.Position.SetX(0);
+		    _player.Position = _player.Position.SetX(65);
 	    }
 
 		#endregion
