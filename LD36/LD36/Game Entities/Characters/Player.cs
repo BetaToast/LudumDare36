@@ -12,9 +12,11 @@ namespace LD36.Characters
     public class Player : BaseGameEntity
     {
 	    private readonly AnimationCollection _animations = new AnimationCollection();
+	    private float _scale = 1.0f;
 		
         public Vector2 Destination { get; set; }
         public float Speed { get; set; }
+		public int Horizon { get; set; }
 		
         public Player(int x = 0, int y = 0)
         {
@@ -25,6 +27,7 @@ namespace LD36.Characters
 
             Destination = Vector2.Zero.MinValue();
             Speed = 3f;
+	        Horizon = 256;
 
 			InitializeAnimations();
         }
@@ -97,10 +100,10 @@ namespace LD36.Characters
 		            Position = Position.SetX(0);
 		            Destination = Destination.SetX(0);
 	            }
-	            if (Position.Y < 0)
+	            if (Position.Y < Horizon)
 	            {
-		            Position = Position.SetY(0);
-					Destination = Destination.SetY(0);
+		            Position = Position.SetY(Horizon);
+					Destination = Destination.SetY(Horizon);
 				}
 
 				if (Position.X + Size.X >= ArchaicGame.ScreenWidth)
@@ -122,12 +125,15 @@ namespace LD36.Characters
 			}
 
 			_animations.Update(gameTime);
+
+			_scale = (Position.Y / ArchaicGame.ScreenHeight) * 4f;
 		}
 		
 	    public override void Draw(GameTime gameTime)
 	    {
 		    var srcRect = _animations.CurrentAnimation.CurrentFrame;
-			ArchaicGame.SpriteBatch.Draw(Texture, Bounds, srcRect, Tint);
+
+			ArchaicGame.SpriteBatch.Draw(Texture, Position, srcRect, Tint, 0f, new Vector2(16f, 24f), _scale, SpriteEffects.None, 0f);
 	    }
     }
 }
