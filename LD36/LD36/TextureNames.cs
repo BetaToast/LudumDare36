@@ -14,6 +14,7 @@
 		public static string CampBackground = @"gfx/CampBackground";
 	    public static string blockGreen_puzzle = @"gfx/blockGreen_puzzle";
 		public static string PlayerAnimation = @"gfx/Player";
-
+		public static string EntranceBackground = @"gfx/Entrance/EntranceBackground";
+		public static string EntranceBackgroundOverlay1 = @"gfx/Entrance/EntranceBackgroundOverlay1";
 	}
 }

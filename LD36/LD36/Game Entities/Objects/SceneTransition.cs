@@ -1,4 +1,5 @@
-﻿using LD36.Extensions;
+﻿using System;
+using LD36.Extensions;
 using Microsoft.Xna.Framework;
 
 namespace LD36.Game_Entities.Objects
@@ -7,6 +8,7 @@ namespace LD36.Game_Entities.Objects
 		: BaseGameEntity
 	{
 		public string DestinationSceneName { get; set; }
+		public Action OnTransition { get; set; }
 
 		public SceneTransition(Vector2 position, Vector2 size, string destinationSceneName)
 		{
@@ -21,6 +23,7 @@ namespace LD36.Game_Entities.Objects
 		{
 			if (ArchaicGame.Player.Bounds.Intersects(Bounds))
 			{
+				OnTransition?.Invoke();
 				ArchaicGame.Scenes.ChangeScene(DestinationSceneName);
 			}
 

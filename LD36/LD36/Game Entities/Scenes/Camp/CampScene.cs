@@ -1,4 +1,5 @@
 ﻿using LD36.Characters;
+using LD36.Extensions;
 using LD36.Game_Entities.Objects;
 using LD36.Game_Entities.Scenes.Entrance;
 using LD36.Input;
@@ -59,7 +60,9 @@ namespace LD36.Game_Entities.Scenes.Camp
 
 			Entities.Add(new MagicSquare(new Vector2(200, 275), () => { }));
 
-			Entities.Add(new SceneTransition(new Vector2(1215, 243), new Vector2(64, 477), EntranceScene.Title));
+		    var entranceTransition = new SceneTransition(new Vector2(1215, 243), new Vector2(64, 477), EntranceScene.Title);
+		    entranceTransition.OnTransition = GoToEntranceScene;
+			Entities.Add(entranceTransition);
 		}
 
         #endregion
@@ -150,7 +153,12 @@ namespace LD36.Game_Entities.Scenes.Camp
         {
             Scenes.ChangeScene(TitleScreen.Title);
         }
-		
-        #endregion
-    }
+
+	    public void GoToEntranceScene()
+	    {
+		    _player.Position = _player.Position.SetX(0);
+	    }
+
+		#endregion
+	}
 }
