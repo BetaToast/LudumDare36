@@ -1,6 +1,6 @@
 ﻿using System;
 using LD36.Characters;
-using LD36.Scenes;
+using LD36.Game_Entities.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

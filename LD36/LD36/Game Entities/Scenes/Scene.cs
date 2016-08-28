@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LD36.Scenes
+namespace LD36.Game_Entities.Scenes
 {
     public abstract class Scene
     {

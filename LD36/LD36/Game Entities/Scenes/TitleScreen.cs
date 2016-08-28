@@ -1,11 +1,11 @@
-﻿using LD36.Controls;
+﻿using LD36.Game_Entities.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace LD36.Scenes
+namespace LD36.Game_Entities.Scenes
 {
     public class TitleScreen
         : Scene

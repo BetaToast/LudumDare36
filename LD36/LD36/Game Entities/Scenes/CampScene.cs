@@ -1,12 +1,11 @@
 ﻿using LD36.Characters;
-using LD36.Controls;
 using LD36.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace LD36.Scenes
+namespace LD36.Game_Entities.Scenes
 {
     public class CampScene
         : Scene
@@ -16,6 +15,7 @@ namespace LD36.Scenes
         private Texture2D _background;
         private Player _player => ArchaicGame.Player;
         private bool ContentLoaded;
+
         #region Initialize
 
         public override void Load(ContentManager content)
@@ -58,7 +58,15 @@ namespace LD36.Scenes
             UpdateInput();
             UpdateControls(gameTime);
             UpdatePlayer(gameTime);
+
+            CreateItem(gameTime);
             base.Update(gameTime);
+        }
+
+        private void CreateItem(GameTime gameTime)
+        {
+            
+
         }
 
         private void UpdateInput()
@@ -74,7 +82,7 @@ namespace LD36.Scenes
                 ExitGame();
             }
 
-            if (Input.Mouse.IsButtonPressed(MouseButtons.Left))
+            if (Input.Mouse.IsButtonHeld(MouseButtons.Left))
             {
                 _player.Destination = new Vector2(Input.Mouse.CurrentPosition.X, Input.Mouse.CurrentPosition.Y);
             }

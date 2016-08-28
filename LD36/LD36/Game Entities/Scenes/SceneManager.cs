@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace LD36.Scenes
+namespace LD36.Game_Entities.Scenes
 {
 	public class SceneManager
 	{

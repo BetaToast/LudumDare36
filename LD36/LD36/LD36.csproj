@@ -39,8 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ArchaicGame.cs" />
-    <Compile Include="Characters\Player.cs" />
-    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Game Entities\Characters\Player.cs" />
+    <Compile Include="Game Entities\BaseGameEntity.cs" />
+    <Compile Include="Game Entities\Controls\Button.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />
@@ -60,12 +61,12 @@
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenes\CreditsScene.cs" />
-    <Compile Include="Scenes\Scene.cs" />
-    <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Scenes\CampScene.cs" />
-    <Compile Include="Scenes\TitleScreen.cs" />
-    <Compile Include="Scenes\_TemplateScene.cs" />
+    <Compile Include="Game Entities\Scenes\CreditsScene.cs" />
+    <Compile Include="Game Entities\Scenes\Scene.cs" />
+    <Compile Include="Game Entities\Scenes\SceneManager.cs" />
+    <Compile Include="Game Entities\Scenes\CampScene.cs" />
+    <Compile Include="Game Entities\Scenes\TitleScreen.cs" />
+    <Compile Include="Game Entities\Scenes\_TemplateScene.cs" />
     <Compile Include="SoundNames.cs" />
     <Compile Include="TextureNames.cs" />
   </ItemGroup>
