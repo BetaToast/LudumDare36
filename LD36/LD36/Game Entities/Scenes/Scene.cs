@@ -1,4 +1,5 @@
-﻿using LD36.Managers;
+﻿using System.Collections.Generic;
+using LD36.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +17,12 @@ namespace LD36.Game_Entities.Scenes
         protected FontManager Fonts => ArchaicGame.Fonts;
 
 		public bool ContentLoaded { get; protected set; }
+		public List<BaseGameEntity> Entities { get; set; }
+
+	    protected Scene()
+	    {
+		    Entities = new List<BaseGameEntity>();
+	    }
 		
         public abstract void Load(ContentManager content);
         public abstract void UnLoad();

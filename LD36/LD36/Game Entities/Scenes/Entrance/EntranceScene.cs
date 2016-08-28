@@ -2,12 +2,12 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace LD36.Game_Entities.Scenes.Camp
+namespace LD36.Game_Entities.Scenes.Entrance
 {
-	public class OldComputerScene
+	public class EntranceScene
 		: Scene
 	{
-		public const string Title = "OldComputer";
+		public const string Title = "Entrance";
 
 		#region Initialize
 

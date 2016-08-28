@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LD36.Animations;
 using LD36.Extensions;
 using LD36.Game_Entities;
@@ -74,14 +75,44 @@ namespace LD36.Characters
             {
                 var dirX = Destination.X > Position.X ? 1 : -1;
                 var dirY = Destination.Y > Position.Y ? 1 : -1;
-                Position = Position.Add(dirX * Speed, dirY * Speed);
+                
+	            if (Vector2.Distance(Position, Destination) > Speed)
+	            {
+		            var velocity = Vector2.Subtract(Destination, Position);
+					velocity.Normalize();
+
+		            var vector = velocity * Speed;
+		            Position += vector;
+					Position = new Vector2((int)Position.X, (int)Position.Y);
+				}
+	            else
+	            {
+		            Destination = Position;
+	            }
 				
 				_animations.ChangeAnimation(dirX == 1 ? PlayerAnimationNames.WalkRight : PlayerAnimationNames.WalkLeft);
+				
+	            if (Position.X < 0)
+	            {
+		            Position = Position.SetX(0);
+		            Destination = Destination.SetX(0);
+	            }
+	            if (Position.Y < 0)
+	            {
+		            Position = Position.SetY(0);
+					Destination = Destination.SetY(0);
+				}
 
-				// *BUG* Something is causing destinations to get messed up
-				var tolerance = 3f;
-				if (IsInRange(Destination.X, Position.X, tolerance)) Destination = Destination.SetX(Position.X);
-				if (IsInRange(Destination.Y, Position.Y, tolerance)) Destination = Destination.SetY(Position.Y);
+				if (Position.X + Size.X >= ArchaicGame.ScreenWidth)
+				{
+					Position = Position.SetX(ArchaicGame.ScreenWidth - Size.X);
+					Destination = Destination.SetX(ArchaicGame.ScreenWidth - Size.X);
+				}
+				if (Position.Y + Size.Y >= ArchaicGame.ScreenHeight)
+				{
+					Position = Position.SetY(ArchaicGame.ScreenHeight - Size.Y);
+					Destination = Destination.SetY(ArchaicGame.ScreenHeight - Size.Y);
+				}
 				
 				if ((int)Position.X == (int)Destination.X && (int)Position.Y == (int)Destination.Y)
                 {
@@ -92,13 +123,7 @@ namespace LD36.Characters
 
 			_animations.Update(gameTime);
 		}
-
-	    public bool IsInRange(float a, float b, float tolerance)
-	    {
-		    var d = a - b;
-		    return d <= tolerance && d >= -tolerance;
-	    }
-
+		
 	    public override void Draw(GameTime gameTime)
 	    {
 		    var srcRect = _animations.CurrentAnimation.CurrentFrame;

@@ -52,7 +52,9 @@
     <Compile Include="Extensions\VectorExtensions.cs" />
     <Compile Include="FontNames.cs" />
     <Compile Include="Game Entities\Objects\MagicSquare.cs" />
+    <Compile Include="Game Entities\Objects\SceneTransition.cs" />
     <Compile Include="Game Entities\Scenes\Camp\OldComputerScene.cs" />
+    <Compile Include="Game Entities\Scenes\Entrance\EntranceScene.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\GamePadButtonState.cs" />
     <Compile Include="Input\GamepadManager.cs" />

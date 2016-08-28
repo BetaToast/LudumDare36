@@ -1,5 +1,6 @@
 ﻿using LD36.Characters;
 using LD36.Game_Entities.Objects;
+using LD36.Game_Entities.Scenes.Entrance;
 using LD36.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -15,7 +16,6 @@ namespace LD36.Game_Entities.Scenes.Camp
 
         private Texture2D _background;
         private Player _player => ArchaicGame.Player;
-        private BaseGameEntity _oldComputer;
 
         #region Initialize
 
@@ -27,10 +27,12 @@ namespace LD36.Game_Entities.Scenes.Camp
                 LoadTextures();
                 LoadSounds();
                 LoadControls();
+	            LoadEntities();
 	            ContentLoaded = true;
             }
         }
-        public override void UnLoad() { }
+
+		public override void UnLoad() { }
 
         private void LoadTextures()
         {
@@ -48,8 +50,17 @@ namespace LD36.Game_Entities.Scenes.Camp
 
         private void LoadControls()
         {
-            _oldComputer = new MagicSquare(new Vector2(200, 275), () => { });
+            
         }
+
+	    private void LoadEntities()
+	    {
+		    Entities.Clear();
+
+			Entities.Add(new MagicSquare(new Vector2(200, 275), () => { }));
+
+			Entities.Add(new SceneTransition(new Vector2(1215, 243), new Vector2(64, 477), EntranceScene.Title));
+		}
 
         #endregion
 
@@ -97,7 +108,10 @@ namespace LD36.Game_Entities.Scenes.Camp
 
         private void UpdateControls(GameTime gameTime)
         {
-            _oldComputer.Update(gameTime);
+	        foreach (var entity in Entities)
+	        {
+		        entity.Update(gameTime);
+	        }
         }
 
         private void UpdatePlayer(GameTime gameTime)
@@ -116,10 +130,14 @@ namespace LD36.Game_Entities.Scenes.Camp
             // Need NonPremultiplied for transparencies to work
             SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
 
-            SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
+				SpriteBatch.Draw(_background, ArchaicGame.ScreenBounds, Color.White);
 
-            _player.Draw(gameTime);
-            _oldComputer.Draw(gameTime);
+				foreach (var entity in Entities)
+				{
+					entity.Draw(gameTime);
+				}
+
+				_player.Draw(gameTime);
 
             SpriteBatch.End();
         }

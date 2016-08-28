@@ -2,6 +2,7 @@
 using LD36.Characters;
 using LD36.Game_Entities.Scenes;
 using LD36.Game_Entities.Scenes.Camp;
+using LD36.Game_Entities.Scenes.Entrance;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -62,7 +63,12 @@ namespace LD36
             Scenes = new SceneManager();
             Scenes.AddScene(TitleScreen.Title, new TitleScreen());
             Scenes.AddScene(CreditsScene.Title, new CreditsScene());
-            Scenes.AddScene(CampScene.Title, new CampScene());
+
+			Scenes.AddScene(CampScene.Title, new CampScene());
+			Scenes.AddScene(OldComputerScene.Title, new OldComputerScene());
+
+			Scenes.AddScene(EntranceScene.Title, new EntranceScene());
+
             base.Initialize();
         }
 

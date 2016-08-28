@@ -10,7 +10,7 @@ namespace LD36.Game_Entities.Objects
 
         public MagicSquare(Vector2 position, Action onClick)
         {
-            ArchaicGame.Textures.Load(TextureNames.blockGreen_puzzle);
+			ArchaicGame.Textures.Load(TextureNames.blockGreen_puzzle);
             ArchaicGame.Sounds.Load(SoundNames.ConfirmBeepy02);
 
             Texture = ArchaicGame.Textures[TextureNames.blockGreen_puzzle];
