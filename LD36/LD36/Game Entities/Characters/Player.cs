@@ -136,6 +136,8 @@ namespace LD36.Characters
             ArchaicGame.SpriteBatch.Draw(Texture, Position, srcRect, Tint, 0f, new Vector2(16f, 24f), _scale, SpriteEffects.None, 0f);
         }
 
-        public bool WithinInteractionDistance(Vector2 mouseBounds) => Position.DistanceTo(mouseBounds) < 30;
-    }
+		public bool WithinInteractionDistance(Vector2 mouseBounds) => Position.DistanceTo(mouseBounds) < 30;
+
+	    public void ChangeAnimation(string animationName) => _animations.ChangeAnimation(animationName);
+	}
 }

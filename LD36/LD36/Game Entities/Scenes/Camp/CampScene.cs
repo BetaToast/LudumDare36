@@ -60,9 +60,11 @@ namespace LD36.Game_Entities.Scenes.Camp
 
 			Entities.Add(new MagicSquare(new Vector2(200, 275), () => { }));
 
-		    var entranceTransition = new SceneTransition(new Vector2(1215, 243), new Vector2(64, 477), EntranceScene.Title);
-		    entranceTransition.OnTransition = GoToEntranceScene;
-			Entities.Add(entranceTransition);
+		    var entranceTransition = new SceneTransition(new Vector2(1215, 243), new Vector2(64, 477), EntranceScene.Title)
+		    {
+			    OnTransition = GoToEntranceScene
+		    };
+		    Entities.Add(entranceTransition);
 		}
 
         #endregion
