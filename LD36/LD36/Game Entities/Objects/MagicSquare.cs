@@ -6,7 +6,7 @@ namespace LD36.Game_Entities.Objects
 {
     public sealed class MagicSquare : BaseGameEntity
     {
-        public Action OnClick { get; set; }
+        private Action OnClick { get; set; }
 
         public MagicSquare(Vector2 position, Action onClick)
         {
@@ -27,7 +27,8 @@ namespace LD36.Game_Entities.Objects
 
             Tint = Color.White;
 
-            if (ArchaicGame.Input.Mouse.IsButtonPressed(MouseButtons.Left) && ArchaicGame.Input.Mouse.Bounds.Intersects(Bounds))
+            if (ArchaicGame.Input.Mouse.IsButtonPressed(MouseButtons.Left) && ArchaicGame.Input.Mouse.Bounds.Intersects(Bounds)
+                && Bounds.Intersects(ArchaicGame.Player.Bounds))
             {
                 ArchaicGame.Sounds.Play(SoundNames.ConfirmBeepy02);
                 OnClick?.Invoke();

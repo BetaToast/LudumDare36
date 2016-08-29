@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace LD36.Extensions
 {
@@ -15,18 +16,21 @@ namespace LD36.Extensions
             return ret;
         }
 
-	    public static Vector2 SetX(this Vector2 input, float x)
-	    {
-		    var ret = new Vector2(x, input.Y);
-		    return ret;
-	    }
+        public static Vector2 SetX(this Vector2 input, float x)
+        {
+            var ret = new Vector2(x, input.Y);
+            return ret;
+        }
 
-	    public static Vector2 SetY(this Vector2 input, float y)
-	    {
-		    var ret = new Vector2(input.X, y);
-		    return ret;
-	    }
+        public static Vector2 SetY(this Vector2 input, float y)
+        {
+            var ret = new Vector2(input.X, y);
+            return ret;
+        }
 
-        public static Point ToPoint(this Vector2 input) => new Point((int)input.X, (int)input.Y);
+        public static float DistanceTo(this Vector2 input, Vector2 otherPoint) => Vector2.Distance(input, otherPoint);
+        public static float AngleTo(this Vector2 instance, Vector2 other) => (float)Math.Atan2(instance.Y - other.Y, instance.X - other.X);
+        public static bool Near(this Vector2 instance, Vector2 other, float maxDistance) => instance.DistanceTo(other) <= maxDistance;
+
     }
 }
