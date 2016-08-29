@@ -56,6 +56,7 @@
     <Compile Include="Game Entities\Objects\SceneTransition.cs" />
     <Compile Include="Game Entities\Scenes\Camp\OldComputerScene.cs" />
     <Compile Include="Game Entities\Scenes\Entrance\EntranceScene.cs" />
+    <Compile Include="Game Entities\Scenes\Gate\GateScene.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\GamePadButtonState.cs" />
     <Compile Include="Input\GamepadManager.cs" />

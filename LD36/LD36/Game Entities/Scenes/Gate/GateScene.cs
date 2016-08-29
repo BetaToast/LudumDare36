@@ -3,19 +3,19 @@ using LD36.Extensions;
 using LD36.Game_Entities.Layers;
 using LD36.Game_Entities.Objects;
 using LD36.Game_Entities.Scenes.Camp;
-using LD36.Game_Entities.Scenes.Gate;
+using LD36.Game_Entities.Scenes.Entrance;
 using LD36.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace LD36.Game_Entities.Scenes.Entrance
+namespace LD36.Game_Entities.Scenes.Gate
 {
-	public class EntranceScene
-		: Scene
+	public class GateScene
+	: Scene
 	{
-		public const string Title = "Entrance";
+		public const string Title = "Gate";
 
 		private Texture2D _background;
 		private Texture2D _overlay1;
@@ -40,9 +40,9 @@ namespace LD36.Game_Entities.Scenes.Entrance
 
 		private void LoadTextures()
 		{
-			_background = Textures.Load(TextureNames.EntranceBackground);
-			_overlay1 = Textures.Load(TextureNames.EntranceBackgroundOverlay1);
-			_collisionLayer = new CollisionLayer(Textures.Load(TextureNames.EntranceCollisionLayer));
+			_background = Textures.Load(TextureNames.GateBackground);
+			_overlay1 = Textures.Load(TextureNames.GateOverlay);
+			_collisionLayer = new CollisionLayer(Textures.Load(TextureNames.GateCollision));
 		}
 
 		private void LoadSounds()
@@ -59,17 +59,11 @@ namespace LD36.Game_Entities.Scenes.Entrance
 		{
 			Entities.Clear();
 
-			var campTransition = new SceneTransition(new Vector2(0, 243), new Vector2(64, 477), CampScene.Title)
+			var entranceTransition = new SceneTransition(new Vector2(0, 243), new Vector2(64, 477), EntranceScene.Title)
 			{
-				OnTransition = GoToCampScene
+				OnTransition = GoToEntranceScene
 			};
-			Entities.Add(campTransition);
-
-			var gateTransition = new SceneTransition(new Vector2(1215, 243), new Vector2(64, 450), GateScene.Title)
-			{
-				OnTransition = GoToGateScene
-			};
-			Entities.Add(gateTransition);
+			Entities.Add(entranceTransition);
 		}
 
 		#endregion
@@ -139,7 +133,7 @@ namespace LD36.Game_Entities.Scenes.Entrance
 				}
 
 				_player.Draw(gameTime);
-				SpriteBatch.Draw(_overlay1, new Vector2(1195, 4), Color.White);
+				SpriteBatch.Draw(_overlay1, Vector2.Zero, Color.White);
 			SpriteBatch.End();
 		}
 
@@ -151,14 +145,9 @@ namespace LD36.Game_Entities.Scenes.Entrance
 			Scenes.ChangeScene(TitleScreen.Title);
 		}
 
-		public void GoToCampScene()
+		public void GoToEntranceScene()
 		{
-			_player.Position = _player.Position.SetX(ArchaicGame.ScreenWidth - _player.Size.X - 65);
-		}
-
-		public void GoToGateScene()
-		{
-			_player.Position = _player.Position.SetX(65);
+			_player.Position = new Vector2(1050, 550);
 		}
 
 		#endregion

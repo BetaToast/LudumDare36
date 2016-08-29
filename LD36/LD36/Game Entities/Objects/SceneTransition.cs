@@ -32,6 +32,7 @@ namespace LD36.Game_Entities.Objects
 
 		public override void Draw(GameTime gameTime)
 		{
+			if (!ArchaicGame.IsDebug) return;
 			base.Draw(gameTime);
 		}
 	}

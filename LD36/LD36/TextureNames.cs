@@ -18,5 +18,8 @@
 		public static string EntranceBackgroundOverlay1 = @"gfx/Entrance/EntranceBackgroundOverlay1";
 		public static string CampCollisionLayer = @"gfx/Collision/CampCollision";
 		public static string EntranceCollisionLayer = @"gfx/Collision/EntranceCollision";
+		public static string GateBackground = @"gfx/Gate/GateBackground";
+		public static string GateOverlay = @"gfx/Gate/GateOverlay";
+		public static string GateCollision = @"gfx/Collision/GateCollision";
 	}
 }

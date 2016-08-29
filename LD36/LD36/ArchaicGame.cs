@@ -3,10 +3,12 @@ using LD36.Characters;
 using LD36.Game_Entities.Scenes;
 using LD36.Game_Entities.Scenes.Camp;
 using LD36.Game_Entities.Scenes.Entrance;
+using LD36.Game_Entities.Scenes.Gate;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using LD36.Managers;
+using Microsoft.Xna.Framework.Input;
 
 namespace LD36
 {
@@ -27,6 +29,7 @@ namespace LD36
         public static int ScreenWidth => (int)Resolution.X;
         public static int ScreenHeight => (int)Resolution.Y;
         public static Rectangle ScreenBounds => new Rectangle(0, 0, ScreenWidth, ScreenHeight);
+		public static bool IsDebug { get; set; }
 
         #region Managers
         public static SoundManager Sounds { get; } = new SoundManager();
@@ -69,6 +72,8 @@ namespace LD36
 
 			Scenes.AddScene(EntranceScene.Title, new EntranceScene());
 
+			Scenes.AddScene(GateScene.Title, new GateScene());
+
             base.Initialize();
         }
 
@@ -92,6 +97,12 @@ namespace LD36
         protected override void Update(GameTime gameTime)
         {
             Input.Update(gameTime);
+
+	        if (Input.Keyboard.IsKeyPressed(Keys.F1))
+	        {
+		        IsDebug = !IsDebug;
+	        }
+
             Scenes.Update(gameTime);
 
             base.Update(gameTime);
