@@ -1,5 +1,6 @@
 ﻿using LD36.Characters;
 using LD36.Extensions;
+using LD36.Game_Entities.Layers;
 using LD36.Game_Entities.Objects;
 using LD36.Game_Entities.Scenes.Camp;
 using LD36.Input;
@@ -17,6 +18,8 @@ namespace LD36.Game_Entities.Scenes.Entrance
 
 		private Texture2D _background;
 		private Texture2D _overlay1;
+		private CollisionLayer _collisionLayer;
+
 		private Player _player => ArchaicGame.Player;
 
 		#region Initialize
@@ -38,6 +41,7 @@ namespace LD36.Game_Entities.Scenes.Entrance
 		{
 			_background = Textures.Load(TextureNames.EntranceBackground);
 			_overlay1 = Textures.Load(TextureNames.EntranceBackgroundOverlay1);
+			_collisionLayer = new CollisionLayer(Textures.Load(TextureNames.EntranceCollisionLayer));
 		}
 
 		private void LoadSounds()
@@ -84,11 +88,11 @@ namespace LD36.Game_Entities.Scenes.Entrance
 				ExitGame();
 			}
 
-			if (Input.Mouse.IsButtonHeld(MouseButtons.Left))
+			if (Input.Mouse.IsButtonHeld(MouseButtons.Left) && _collisionLayer.IsValidClick())
 			{
 				var mx = Input.Mouse.CurrentPosition.X;
 				var my = Input.Mouse.CurrentPosition.Y;
-				if (mx > 0 && my > 0)
+				if (mx > 0 && my > 0 && _collisionLayer.IsValidLocation((int)mx, (int)my))
 				{
 					_player.Destination = new Vector2(mx, my);
 				}
@@ -105,7 +109,7 @@ namespace LD36.Game_Entities.Scenes.Entrance
 
 		private void UpdatePlayer(GameTime gameTime)
 		{
-			_player.Update(gameTime);
+			_player.Update(gameTime, _collisionLayer);
 		}
 
 		#endregion

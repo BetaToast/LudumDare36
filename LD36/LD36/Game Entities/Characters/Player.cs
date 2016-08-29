@@ -4,6 +4,7 @@ using LD36.Animations;
 using LD36.Extensions;
 using LD36.Game_Entities;
 using LD36.Game_Entities.Characters;
+using LD36.Game_Entities.Layers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -13,6 +14,8 @@ namespace LD36.Characters
     {
         private readonly AnimationCollection _animations = new AnimationCollection();
         private float _scale = 1.0f;
+
+	    public Rectangle GroundBounds => new Rectangle((int)Position.X, (int) (Position.Y + 32), 32, 16);
 
         public Vector2 Destination { get; set; }
         public float Speed { get; set; }
@@ -70,7 +73,7 @@ namespace LD36.Characters
             _animations.ChangeAnimation(PlayerAnimationNames.IdleRight);
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, CollisionLayer collisionLayer)
         {
             base.Update(gameTime);
 
@@ -85,8 +88,19 @@ namespace LD36.Characters
                     velocity.Normalize();
 
                     var vector = velocity * Speed;
+	                var originalPosition = Position;
                     Position += vector;
-                    Position = new Vector2((int)Position.X, (int)Position.Y);
+					Position = new Vector2((int)Position.X, (int)Position.Y);
+
+					while (collisionLayer.Intersects(GroundBounds))
+	                {
+		                Position -= vector;
+						Position = new Vector2((int)Position.X, (int)Position.Y);
+		                if (Position.X > ArchaicGame.ScreenWidth || Position.Y > ArchaicGame.ScreenHeight)
+		                {
+			                Position = originalPosition;
+		                }
+					}
                 }
                 else
                 {

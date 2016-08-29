@@ -16,5 +16,7 @@
 		public static string PlayerAnimation = @"gfx/Player";
 		public static string EntranceBackground = @"gfx/Entrance/EntranceBackground";
 		public static string EntranceBackgroundOverlay1 = @"gfx/Entrance/EntranceBackgroundOverlay1";
+		public static string CampCollisionLayer = @"gfx/Collision/CampCollision";
+		public static string EntranceCollisionLayer = @"gfx/Collision/EntranceCollision";
 	}
 }

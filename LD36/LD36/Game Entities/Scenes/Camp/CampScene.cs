@@ -1,5 +1,6 @@
 ﻿using LD36.Characters;
 using LD36.Extensions;
+using LD36.Game_Entities.Layers;
 using LD36.Game_Entities.Objects;
 using LD36.Game_Entities.Scenes.Entrance;
 using LD36.Input;
@@ -15,6 +16,7 @@ namespace LD36.Game_Entities.Scenes.Camp
     {
         public const string Title = "Camp";
 
+	    private CollisionLayer _collisionLayer;
         private Texture2D _background;
         private Player _player => ArchaicGame.Player;
 
@@ -42,7 +44,9 @@ namespace LD36.Game_Entities.Scenes.Camp
             Textures.Load(TextureNames.StartAdventureButton);
             Textures.Load(TextureNames.ExitGameButton);
             Textures.Load(TextureNames.CreditsButton);
-        }
+
+			_collisionLayer = new CollisionLayer(Textures.Load(TextureNames.CampCollisionLayer));
+		}
 
         private void LoadSounds()
         {
@@ -58,7 +62,7 @@ namespace LD36.Game_Entities.Scenes.Camp
 	    {
 		    Entities.Clear();
 
-			Entities.Add(new MagicSquare(new Vector2(200, 275), () => { }));
+			Entities.Add(new MagicSquare(new Vector2(608, 328), GoToOldComputer));
 
 		    var entranceTransition = new SceneTransition(new Vector2(1215, 243), new Vector2(64, 477), EntranceScene.Title)
 		    {
@@ -100,11 +104,11 @@ namespace LD36.Game_Entities.Scenes.Camp
                 ExitGame();
             }
 
-            if (Input.Mouse.IsButtonHeld(MouseButtons.Left))
+            if (Input.Mouse.IsButtonHeld(MouseButtons.Left) && _collisionLayer.IsValidClick())
             {
 	            var mx = Input.Mouse.CurrentPosition.X;
 	            var my = Input.Mouse.CurrentPosition.Y;
-	            if (mx > 0 && my > 0)
+	            if (mx > 0 && my > 0 && _collisionLayer.IsValidLocation((int)mx, (int)my))
 	            {
 		            _player.Destination = new Vector2(mx, my);
 	            }
@@ -121,7 +125,7 @@ namespace LD36.Game_Entities.Scenes.Camp
 
         private void UpdatePlayer(GameTime gameTime)
         {
-            _player.Update(gameTime);
+            _player.Update(gameTime, _collisionLayer);
         }
 
         #endregion
@@ -159,6 +163,11 @@ namespace LD36.Game_Entities.Scenes.Camp
 	    public void GoToEntranceScene()
 	    {
 		    _player.Position = _player.Position.SetX(65);
+	    }
+
+	    public void GoToOldComputer()
+	    {
+		    
 	    }
 
 		#endregion
